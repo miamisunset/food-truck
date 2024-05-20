@@ -47,7 +47,5 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
             "Push Cart" => FacilityType.PushCart,
             _ => FacilityType.Unknown
         };
-
     }
-
 }

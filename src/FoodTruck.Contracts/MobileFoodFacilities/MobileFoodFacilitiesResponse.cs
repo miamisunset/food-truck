@@ -9,5 +9,5 @@ public record MobileFoodFacilitiesResponse(
     string Address,
     string? BlockLot,
     string? FoodItems,
-    int Longitude,
-    int Latitude);
+    float Longitude,
+    float Latitude);
