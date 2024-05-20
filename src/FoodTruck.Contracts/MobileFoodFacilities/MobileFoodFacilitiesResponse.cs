@@ -3,11 +3,11 @@
 public record MobileFoodFacilitiesResponse(
     int LocationId,
     string Applicant,
-    FacilityType FacilityType,
+    FacilityType? FacilityType,
     int Cnn,
     string? LocationDescription,
     string Address,
-    int BlockLot,
-    string FoodItems,
+    string? BlockLot,
+    string? FoodItems,
     int Longitude,
     int Latitude);

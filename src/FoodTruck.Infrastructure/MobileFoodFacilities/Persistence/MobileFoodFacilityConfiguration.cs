@@ -12,12 +12,12 @@ public class MobileFoodFacilityConfiguration : IEntityTypeConfiguration<MobileFo
 
         builder.Property(e => e.FacilityType)
             .HasConversion(
-                facilityType => facilityType.Name,
+                facilityType => facilityType!.Name,
                 value => FacilityType.FromName(value, false));
 
         builder.Property(e => e.Status)
             .HasConversion(
-                status => status.Name,
+                status => status!.Name,
                 value => Status.FromName(value, false));
     }
 }

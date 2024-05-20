@@ -36,8 +36,8 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
             _ => Problem());
     }
 
-    private static FacilityType ToDto(DomainFacilityType facilityType) =>
-        facilityType.Name switch
+    private static FacilityType ToDto(DomainFacilityType? facilityType) =>
+        facilityType?.Name switch
         {
             nameof(DomainFacilityType.Unknown) => FacilityType.Unknown,
             nameof(DomainFacilityType.FoodTruck) => FacilityType.Truck,
