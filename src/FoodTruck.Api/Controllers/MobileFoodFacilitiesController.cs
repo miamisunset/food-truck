@@ -2,6 +2,7 @@
 using FoodTruck.Contracts.MobileFoodFacilities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using DomainFacilityType = FoodTruck.Domain.MobileFoodFacilities.FacilityType;
 
 namespace FoodTruck.Api.Controllers;
 
@@ -20,8 +21,7 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
                     .Select(foodFacility => new MobileFoodFacilitiesResponse(
                         foodFacility.LocationId, 
                         foodFacility.Applicant,
-                        // TODO: fix conversion error
-                        foodFacility.FacilityType, 
+                        ToDto(foodFacility.FacilityType), 
                         foodFacility.Cnn, 
                         foodFacility.LocationDescription, 
                         foodFacility.Address, 
@@ -33,6 +33,14 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
 
                 return Ok(response);
             },
-            error => Problem());
+            _ => Problem());
     }
+
+    private static FacilityType ToDto(DomainFacilityType facilityType) =>
+        facilityType.Name switch
+        {
+            nameof(DomainFacilityType.Unknown) => FacilityType.Unknown,
+            nameof(DomainFacilityType.FoodTruck) => FacilityType.Truck,
+            nameof(DomainFacilityType.PushCart) => FacilityType.PushCart,
+        };
 }

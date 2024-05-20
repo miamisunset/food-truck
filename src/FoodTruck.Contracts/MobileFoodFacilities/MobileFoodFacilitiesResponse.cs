@@ -7,7 +7,7 @@ public record MobileFoodFacilitiesResponse(
     int Cnn,
     string? LocationDescription,
     string Address,
-    string BlockLot,
+    int BlockLot,
     string FoodItems,
     int Longitude,
     int Latitude);
