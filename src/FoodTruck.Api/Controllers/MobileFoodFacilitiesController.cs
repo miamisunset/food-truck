@@ -1,4 +1,5 @@
-﻿using FoodTruck.Application.MobileFoodFacilities.Queries;
+﻿using System.Diagnostics;
+using FoodTruck.Application.MobileFoodFacilities.Queries;
 using FoodTruck.Contracts.MobileFoodFacilities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -36,11 +37,17 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
             _ => Problem());
     }
 
-    private static FacilityType ToDto(DomainFacilityType? facilityType) =>
-        facilityType?.Name switch
+    private static FacilityType ToDto(DomainFacilityType? facilityType)
+    {
+        if (facilityType is null) return FacilityType.Unknown;
+        
+        return facilityType!.Name switch
         {
-            nameof(DomainFacilityType.Unknown) => FacilityType.Unknown,
-            nameof(DomainFacilityType.FoodTruck) => FacilityType.Truck,
-            nameof(DomainFacilityType.PushCart) => FacilityType.PushCart,
+            "Truck" => FacilityType.Truck,
+            "Push Cart" => FacilityType.PushCart,
+            _ => FacilityType.Unknown
         };
+
+    }
+
 }

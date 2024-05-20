@@ -14,7 +14,7 @@ public static class DependencyInjection
     private static IServiceCollection AddPersistence(this IServiceCollection services)
     {
         services.AddDbContext<FoodTruckDbContext>(options =>
-            options.UseSqlite("Data Source = FoodTruck.db"));
+            options.UseSqlite("Data Source = Truck.db"));
 
         services.AddScoped<IMobileFoodFacilityRepository, MobileFoodFacilitiesRepository>();
         return services;

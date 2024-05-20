@@ -2,31 +2,31 @@
 
 public class MobileFoodFacility
 {
-    public int LocationId { get; init; }
-    public string Applicant { get; init; } = string.Empty;
-    public FacilityType? FacilityType { get; init; }
-    public int Cnn { get; init; }
-    public string? LocationDescription { get; init; }
-    public string Address { get; init; } = string.Empty;
-    public string? BlockLot { get; init; }
-    public string? Block { get; init; }
-    public string? Lot { get; init; }
-    public string Permit { get; init; } = string.Empty;
-    public Status Status { get; init; } = Status.Approved;
-    public string? FoodItems { get; init; }
-    public int? X { get; init; }
-    public int? Y { get; init; }
-    public int Latitude { get; init; }
-    public int Longitude { get; init; }
-    public string Schedule { get; init; } = string.Empty;
-    public string? DaysHours { get; init; }
-    public DateTime? Approved { get; init; }
-    public int Received { get; init; }
-    public bool PriorPermit { get; init; }
-    public DateTime? ExpirationDate { get; init; }
-    public int? FirePreventionDistricts { get; init; }
-    public int? PoliceDistricts { get; init; }
-    public int? SupervisorDistricts { get; init; }
-    public int? ZipCodes { get; init; }
-    public int? Neighborhoods { get; init; }
+    public int LocationId { get; set; }
+    public string Applicant { get; set; } = string.Empty;
+    public FacilityType? FacilityType { get; set; }
+    public int Cnn { get; set; }
+    public string? LocationDescription { get; set; }
+    public string Address { get; set; } = string.Empty;
+    public string? BlockLot { get; set; }
+    public string? Block { get; set; }
+    public string? Lot { get; set; }
+    public string Permit { get; set; } = string.Empty;
+    public Status Status { get; set; } = Status.Approved;
+    public string? FoodItems { get; set; }
+    public int? X { get; set; }
+    public int? Y { get; set; }
+    public int Latitude { get; set; }
+    public int Longitude { get; set; }
+    public string Schedule { get; set; } = string.Empty;
+    public string? DaysHours { get; set; }
+    public DateTime? Approved { get; set; }
+    public int Received { get; set; }
+    public bool PriorPermit { get; set; }
+    public DateTime? ExpirationDate { get; set; }
+    public int? FirePreventionDistricts { get; set; }
+    public int? PoliceDistricts { get; set; }
+    public int? SupervisorDistricts { get; set; }
+    public int? ZipCodes { get; set; }
+    public int? Neighborhoods { get; set; }
 }

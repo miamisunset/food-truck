@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodTruck.Infrastructure.Migrations
 {
     [DbContext(typeof(FoodTruckDbContext))]
-    [Migration("20240520201100_Initial")]
+    [Migration("20240520202710_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

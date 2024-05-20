@@ -1,3 +1,4 @@
+using FoodTruck.Application;
 using FoodTruck.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +8,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddProblemDetails();
 
-builder.Services.AddInfrastructure();
+builder.Services
+    .AddInfrastructure()
+    .AddApplication();
 
 var app = builder.Build();
 
