@@ -1,15 +1,28 @@
 ﻿using System.Diagnostics;
 using FoodTruck.Application.MobileFoodFacilities.Queries;
 using FoodTruck.Contracts.MobileFoodFacilities;
+using FoodTruck.Domain.MobileFoodFacilities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using DomainFacilityType = FoodTruck.Domain.MobileFoodFacilities.FacilityType;
+using FacilityType = FoodTruck.Contracts.MobileFoodFacilities.FacilityType;
 
 namespace FoodTruck.Api.Controllers;
 
 [Route("[controller]")]
 public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
 {
+    [HttpGet("{locationId:int}")]
+    public async Task<IActionResult> GetMobileFoodFacilityByLocationId(int locationId)
+    {
+        var result = await mediator
+            .Send(new GetMobileFoodFacilityByLocationIdQuery(locationId));
+
+        return result.MatchFirst(
+            foodFacility => Ok(ToResponseDto(foodFacility)),
+            _ => Problem());
+    }
+    
     [HttpGet]
     public async Task<IActionResult> GetAllMobileFoodFacilities()
     {
@@ -19,23 +32,25 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
             foodFacilities =>
             {
                 var response = foodFacilities
-                    .Select(foodFacility => new MobileFoodFacilitiesResponse(
-                        foodFacility.LocationId, 
-                        foodFacility.Applicant,
-                        ToDto(foodFacility.FacilityType), 
-                        foodFacility.Cnn, 
-                        foodFacility.LocationDescription, 
-                        foodFacility.Address, 
-                        foodFacility.BlockLot, 
-                        foodFacility.FoodItems, 
-                        foodFacility.Longitude, 
-                        foodFacility.Latitude))
+                    .Select(ToResponseDto)
                     .ToList();
 
                 return Ok(response);
             },
             _ => Problem());
     }
+
+    private static MobileFoodFacilitiesResponse ToResponseDto(MobileFoodFacility foodFacility) =>
+        new(foodFacility.LocationId, 
+            foodFacility.Applicant,
+            ToDto(foodFacility.FacilityType), 
+            foodFacility.Cnn, 
+            foodFacility.LocationDescription, 
+            foodFacility.Address, 
+            foodFacility.BlockLot, 
+            foodFacility.FoodItems, 
+            foodFacility.Longitude, 
+            foodFacility.Latitude);
 
     private static FacilityType ToDto(DomainFacilityType? facilityType)
     {

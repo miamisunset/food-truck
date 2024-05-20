@@ -7,9 +7,11 @@ namespace FoodTruck.Infrastructure.MobileFoodFacilities.Persistence;
 
 internal class MobileFoodFacilitiesRepository(FoodTruckDbContext dbContext) : IMobileFoodFacilityRepository
 {
-    public async Task<List<MobileFoodFacility>?> ListAsync()
-    {
-        var r = await dbContext.MobileFoodFacilities.ToListAsync();
-        return r;
-    }
+    public async Task<List<MobileFoodFacility>?> ListAsync() => 
+        await dbContext.MobileFoodFacilities.ToListAsync();
+
+    public async Task<MobileFoodFacility?> GetByLocationId(int locationId) =>
+        await dbContext.MobileFoodFacilities
+            .Where(mff => mff.LocationId == locationId)
+            .FirstOrDefaultAsync();
 }
