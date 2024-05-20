@@ -1,12 +1,12 @@
 ﻿using FoodTruck.Application.Common.Interfaces;
 using FoodTruck.Domain.MobileFoodFacilities;
+using FoodTruck.Infrastructure.Common.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodTruck.Infrastructure.MobileFoodFacilities.Persistence;
 
-internal class MobileFoodFacilitiesRepository : IMobileFoodFacilityRepository
+internal class MobileFoodFacilitiesRepository(FoodTruckDbContext dbContext) : IMobileFoodFacilityRepository
 {
-    public Task<List<MobileFoodFacility>?> ListAsync()
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<List<MobileFoodFacility>?> ListAsync() => 
+        await dbContext.MobileFoodFacilities.ToListAsync();
 }
