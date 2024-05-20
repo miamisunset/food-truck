@@ -4,3 +4,8 @@ GET {{FoodTruck.Api_HostAddress}}/mobilefoodfacilities
 Accept: application/json
 
 ###
+
+GET {{FoodTruck.Api_HostAddress}}/mobilefoodfacilities/364218
+Accept: application/json
+
+###
