@@ -1,4 +1,5 @@
-﻿using FoodTruck.Application.MobileFoodFacilities.Queries;
+﻿using System.Diagnostics;
+using FoodTruck.Application.MobileFoodFacilities.Queries;
 using FoodTruck.Contracts.MobileFoodFacilities;
 using FoodTruck.Domain.MobileFoodFacilities;
 using MediatR;
@@ -40,8 +41,11 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
     }
 
     [HttpGet("search")]
-    public async Task<IActionResult> SearchByName([FromQuery]string name)
+    public async Task<IActionResult> SearchByName([FromQuery]string? name)
     {
+        if (name is null)
+            return Problem(statusCode: StatusCodes.Status400BadRequest);
+        
         var result = await mediator.Send(new GetByNameQuery(name));
 
         return result.MatchFirst(
