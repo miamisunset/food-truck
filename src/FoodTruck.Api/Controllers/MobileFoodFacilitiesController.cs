@@ -6,7 +6,7 @@ using DomainFacilityType = FoodTruck.Domain.MobileFoodFacilities.FacilityType;
 
 namespace FoodTruck.Api.Controllers;
 
-[Route("{controller}")]
+[Route("[controller]")]
 public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
 {
     [HttpGet]
