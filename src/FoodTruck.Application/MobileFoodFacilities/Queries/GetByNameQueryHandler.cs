@@ -5,16 +5,16 @@ using MediatR;
 
 namespace FoodTruck.Application.MobileFoodFacilities.Queries;
 
-public class GetAllMobileFoodFacilitiesQueryHandler(
+public class GetByNameQueryHandler(
     IMobileFoodFacilityRepository repository) 
-    : IRequestHandler<GetAllMobileFoodFacilitiesQuery, ErrorOr<List<MobileFoodFacility>>>
+    : IRequestHandler<GetByNameQuery, ErrorOr<List<MobileFoodFacility>>>
 {
     public async Task<ErrorOr<List<MobileFoodFacility>>> Handle(
-        GetAllMobileFoodFacilitiesQuery query, 
+        GetByNameQuery query, 
         CancellationToken cancellationToken)
     {
-        var foodFacilities = await repository.ListAsync();
-
+        var foodFacilities = await repository.GetByApplicant(query.applicant);
+        
         return foodFacilities is null || foodFacilities.Count is 0
             ? Error.NotFound(description: "No food trucks or carts found")
             : foodFacilities;

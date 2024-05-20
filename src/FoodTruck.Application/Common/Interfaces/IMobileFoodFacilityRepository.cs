@@ -6,4 +6,5 @@ public interface IMobileFoodFacilityRepository
 {
     Task<List<MobileFoodFacility>?> ListAsync();
     Task<MobileFoodFacility?> GetByLocationId(int locationId);
+    Task<List<MobileFoodFacility>?> GetByApplicant(string applicant);
 }

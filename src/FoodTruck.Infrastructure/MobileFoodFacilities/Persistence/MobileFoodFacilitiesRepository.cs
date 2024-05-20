@@ -14,4 +14,9 @@ internal class MobileFoodFacilitiesRepository(FoodTruckDbContext dbContext) : IM
         await dbContext.MobileFoodFacilities
             .Where(mff => mff.LocationId == locationId)
             .FirstOrDefaultAsync();
+
+    public async Task<List<MobileFoodFacility>?> GetByApplicant(string applicant) =>
+        await dbContext.MobileFoodFacilities
+            .Where(mff => mff.Applicant.Contains(applicant))
+            .ToListAsync();
 }

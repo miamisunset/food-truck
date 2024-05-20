@@ -5,18 +5,18 @@ using MediatR;
 
 namespace FoodTruck.Application.MobileFoodFacilities.Queries;
 
-public class GetMobileFoodFacilityByLocationIdQueryHandler(
+public class GetByLocationIdQueryHandler(
     IMobileFoodFacilityRepository repository)
-    : IRequestHandler<GetMobileFoodFacilityByLocationIdQuery, ErrorOr<MobileFoodFacility>>
+    : IRequestHandler<GetByLocationIdQuery, ErrorOr<MobileFoodFacility>>
 {
     public async Task<ErrorOr<MobileFoodFacility>> Handle(
-        GetMobileFoodFacilityByLocationIdQuery query, 
+        GetByLocationIdQuery query, 
         CancellationToken cancellationToken)
     {
-        var foodFacility = await repository.GetByLocationId(query.locationId);
+        var foodFacility = await repository.GetByLocationId(query.LocationId);
 
         return foodFacility is null
-            ? Error.NotFound($"{query.locationId} mobile food facility not found")
+            ? Error.NotFound($"{query.LocationId} mobile food facility not found")
             : foodFacility;
     }
 }

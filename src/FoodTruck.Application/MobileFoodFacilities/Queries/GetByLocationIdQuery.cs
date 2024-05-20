@@ -4,4 +4,4 @@ using MediatR;
 
 namespace FoodTruck.Application.MobileFoodFacilities.Queries;
 
-public record GetAllMobileFoodFacilitiesQuery : IRequest<ErrorOr<List<MobileFoodFacility>>>;
+public record GetByLocationIdQuery(int LocationId) : IRequest<ErrorOr<MobileFoodFacility>>;

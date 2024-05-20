@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using FoodTruck.Application.MobileFoodFacilities.Queries;
+﻿using FoodTruck.Application.MobileFoodFacilities.Queries;
 using FoodTruck.Contracts.MobileFoodFacilities;
 using FoodTruck.Domain.MobileFoodFacilities;
 using MediatR;
@@ -16,7 +15,7 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
     public async Task<IActionResult> GetMobileFoodFacilityByLocationId(int locationId)
     {
         var result = await mediator
-            .Send(new GetMobileFoodFacilityByLocationIdQuery(locationId));
+            .Send(new GetByLocationIdQuery(locationId));
 
         return result.MatchFirst(
             foodFacility => Ok(ToResponseDto(foodFacility)),
@@ -26,8 +25,25 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllMobileFoodFacilities()
     {
-        var result = await mediator.Send(new GetAllMobileFoodFacilitiesQuery());
+        var result = await mediator.Send(new GetAllQuery());
         
+        return result.MatchFirst(
+            foodFacilities =>
+            {
+                var response = foodFacilities
+                    .Select(ToResponseDto)
+                    .ToList();
+
+                return Ok(response);
+            },
+            _ => Problem());
+    }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchByName([FromQuery]string name)
+    {
+        var result = await mediator.Send(new GetByNameQuery(name));
+
         return result.MatchFirst(
             foodFacilities =>
             {
