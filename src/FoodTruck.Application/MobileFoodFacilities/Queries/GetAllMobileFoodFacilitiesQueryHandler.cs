@@ -1,16 +1,22 @@
 ﻿using ErrorOr;
+using FoodTruck.Application.Common.Interfaces;
 using FoodTruck.Domain.MobileFoodFacilities;
 using MediatR;
 
 namespace FoodTruck.Application.MobileFoodFacilities.Queries;
 
-public class GetAllMobileFoodFacilitiesQueryHandler 
+public class GetAllMobileFoodFacilitiesQueryHandler(
+    IMobileFoodFacilityRepository repository) 
     : IRequestHandler<GetAllMobileFoodFacilitiesQuery, ErrorOr<List<MobileFoodFacility>>>
 {
-    public Task<ErrorOr<List<MobileFoodFacility>>> Handle(
+    public async Task<ErrorOr<List<MobileFoodFacility>>> Handle(
         GetAllMobileFoodFacilitiesQuery query, 
         CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var foodFacilities = await repository.ListAsync();
+        
+        return foodFacilities is null
+            ? Error.NotFound(description: "No food trucks or carts found")
+            : foodFacilities;
     }
 }
