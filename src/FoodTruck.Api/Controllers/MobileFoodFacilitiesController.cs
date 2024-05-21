@@ -1,4 +1,5 @@
-﻿using FoodTruck.Application.MobileFoodFacilities.Queries;
+﻿using ErrorOr;
+using FoodTruck.Application.MobileFoodFacilities.Queries;
 using FoodTruck.Contracts.MobileFoodFacilities;
 using FoodTruck.Domain.MobileFoodFacilities;
 using MediatR;
@@ -9,7 +10,7 @@ using FacilityType = FoodTruck.Contracts.MobileFoodFacilities.FacilityType;
 namespace FoodTruck.Api.Controllers;
 
 [Route("[controller]")]
-public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
+public class MobileFoodFacilitiesController(ISender mediator) : ApiController
 {
     [HttpGet("{locationId:int}")]
     public async Task<IActionResult> GetMobileFoodFacilityByLocationId(int locationId)
@@ -17,9 +18,9 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
         var result = await mediator
             .Send(new GetByLocationIdQuery(locationId));
 
-        return result.MatchFirst(
+        return result.Match(
             foodFacility => Ok(ToResponseDto(foodFacility)),
-            _ => Problem());
+            Problem);
     }
     
     [HttpGet]
@@ -27,7 +28,7 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
     {
         var result = await mediator.Send(new GetAllQuery());
         
-        return result.MatchFirst(
+        return result.Match(
             foodFacilities =>
             {
                 var response = foodFacilities
@@ -36,7 +37,7 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
 
                 return Ok(response);
             },
-            _ => Problem());
+            Problem);
     }
 
     [HttpGet("search")]
@@ -47,7 +48,7 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
         
         var result = await mediator.Send(new GetByNameQuery(name));
 
-        return result.MatchFirst(
+        return result.Match(
             foodFacilities =>
             {
                 var response = foodFacilities
@@ -56,7 +57,7 @@ public class MobileFoodFacilitiesController(ISender mediator) : ControllerBase
 
                 return Ok(response);
             },
-            _ => Problem());
+            Problem);
     }
 
     private static MobileFoodFacilitiesResponse ToResponseDto(MobileFoodFacility foodFacility) =>
