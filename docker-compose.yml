@@ -1,0 +1,12 @@
+﻿version: "3.8"
+
+services:
+  webapp:
+    image: "food-truck"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
