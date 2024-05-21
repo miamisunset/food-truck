@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodTruck.Infrastructure.Tests.MobileFoodFacilities.Persistence;
 
-public class MobileFoodFacilityRepositoryTests
+public class MobileFoodFacilityRepositoryTests : IDisposable
 {
     private readonly FoodTruckDbContext _context;
     private readonly IMobileFoodFacilityRepository _repository;
@@ -74,8 +74,5 @@ public class MobileFoodFacilityRepositoryTests
         Assert.Equal(applicant, result.First().Applicant);
     }
     
-    public void Dispose()
-    {
-        _context.Database.EnsureDeleted();
-    }
+    public void Dispose() => _context.Database.EnsureDeleted();
 }
