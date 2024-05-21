@@ -2,7 +2,7 @@
 
 public record MobileFoodFacilitiesResponse(
     int LocationId,
-    string Applicant,
+    string Name,
     FacilityType? FacilityType,
     int Cnn,
     string? LocationDescription,

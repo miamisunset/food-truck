@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FoodTruck.Infrastructure.MobileFoodFacilities.Persistence;
 
-public class MobileFoodFacilityConfiguration : IEntityTypeConfiguration<MobileFoodFacility>
+internal class MobileFoodFacilityConfiguration : IEntityTypeConfiguration<MobileFoodFacility>
 {
     public void Configure(EntityTypeBuilder<MobileFoodFacility> builder)
     {
