@@ -4,8 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FoodTruck.Infrastructure.MobileFoodFacilities.Persistence;
 
+/// <summary>
+/// Represents the configuration for the MobileFoodFacility entity.
+/// </summary>
 internal class MobileFoodFacilityConfiguration : IEntityTypeConfiguration<MobileFoodFacility>
 {
+    /// <summary>
+    /// Configures the entity mapping for MobileFoodFacility.
+    /// </summary>
+    /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<MobileFoodFacility> builder)
     {
         builder.HasKey(e => e.LocationId);

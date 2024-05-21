@@ -1,5 +1,8 @@
 ﻿namespace FoodTruck.Contracts.MobileFoodFacilities;
 
+/// <summary>
+/// Represents the response object for mobile food facilities.
+/// </summary>
 public record MobileFoodFacilitiesResponse(
     int LocationId,
     string Name,
