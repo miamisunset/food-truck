@@ -14,5 +14,6 @@
     &lt;TestId&gt;xUnit::A2B8C092-4708-412F-A5DB-FE19F65BA7DA::net8.0::FoodTruck.Infrastructure.Tests.MobileFoodFacilities.Persistence.MobileFoodFacilityRepositoryTests.ListAsync_ShouldReturnAllFacilities_WhenFacilitiesExist&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::A2B8C092-4708-412F-A5DB-FE19F65BA7DA::net8.0::FoodTruck.Infrastructure.Tests.MobileFoodFacilities.Persistence.MobileFoodFacilityRepositoryTests.GetByLocationId_ShouldReturnFacility_WhenIdExists&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::A2B8C092-4708-412F-A5DB-FE19F65BA7DA::net8.0::FoodTruck.Infrastructure.Tests.MobileFoodFacilities.Persistence.MobileFoodFacilityRepositoryTests.GetByApplicant_ShouldReturnFacility_WhenApplicantExists&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::EF6F44F4-956D-4652-A27D-57BB08117568::net8.0::FoodTruck.Application.Tests.MobileFoodFacilities.Queries.GetAllQueryHandlerTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

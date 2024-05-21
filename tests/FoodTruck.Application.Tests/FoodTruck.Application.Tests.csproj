@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\FoodTruck.Application\FoodTruck.Application.csproj" />
+      <ProjectReference Include="..\..\src\FoodTruck.Application\FoodTruck.Application.csproj" />
     </ItemGroup>
 
 </Project>
