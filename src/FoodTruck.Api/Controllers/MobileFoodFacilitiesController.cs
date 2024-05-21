@@ -12,6 +12,9 @@ namespace FoodTruck.Api.Controllers;
 public class MobileFoodFacilitiesController(ISender mediator) : ApiController
 {
     [HttpGet("{locationId:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MobileFoodFacilitiesResponse))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetMobileFoodFacilityByLocationId(int locationId)
     {
         var result = await mediator
@@ -23,6 +26,9 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
     }
     
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<MobileFoodFacilitiesResponse>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetAllMobileFoodFacilities()
     {
         var result = await mediator.Send(new GetAllQuery());
@@ -40,6 +46,9 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
     }
 
     [HttpGet("search")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MobileFoodFacilitiesResponse))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> SearchByName([FromQuery]string? name)
     {
         if (name is null)
