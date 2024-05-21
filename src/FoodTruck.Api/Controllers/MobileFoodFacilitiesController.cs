@@ -45,8 +45,8 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
         return await GetMobileFoodFacilitiesList(new GetByNameQuery(name));
     }
 
-    private async Task<IActionResult> GetMobileFoodFacilitiesList<TRequest>(TRequest query)
-        where TRequest : IRequest<ErrorOr<List<MobileFoodFacility>>> 
+    private async Task<IActionResult> GetMobileFoodFacilitiesList(
+        IRequest<ErrorOr<List<MobileFoodFacility>>> query)
     {
         var result = await mediator.Send(query);
 
