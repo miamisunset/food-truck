@@ -39,8 +39,10 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> SearchByName([FromQuery]string? name)
     {
-        if (name is null)
-            return Problem(statusCode: StatusCodes.Status400BadRequest);
+        const int maxNameLength = 255;
+        
+        if (name is null || name.Length > maxNameLength)
+            return BadRequest($"Name must not be null or longer than {maxNameLength} characters.");
 
         return await GetMobileFoodFacilitiesList(new GetByNameQuery(name));
     }
