@@ -8,7 +8,7 @@ using FacilityType = FoodTruck.Contracts.MobileFoodFacilities.FacilityType;
 
 namespace FoodTruck.Api.Controllers;
 
-[Route("[controller]")]
+[Route("/api/")]
 public class MobileFoodFacilitiesController(ISender mediator) : ApiController
 {
     [HttpGet("{locationId:int}")]
