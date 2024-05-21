@@ -7,22 +7,22 @@ using Moq;
 
 namespace FoodTruck.Application.Tests.MobileFoodFacilities.Queries;
 
-public class GetByNameQueryHandlerTests
+public class GetAllQueryHandlerTest
 {
     private readonly Mock<IMobileFoodFacilityRepository> _repositoryMock;
-    private readonly GetByNameQueryHandler _handler;
+    private readonly GetAllQueryHandler _handler;
 
-    public GetByNameQueryHandlerTests()
+    public GetAllQueryHandlerTest()
     {
         _repositoryMock = new Mock<IMobileFoodFacilityRepository>();
-        _handler = new GetByNameQueryHandler(_repositoryMock.Object);
+        _handler = new GetAllQueryHandler(_repositoryMock.Object);
     }
     
     [Fact]
-    public async Task Handle_ShouldReturnListOfMobileFoodFacility_WhenApplicantExists()
+    public async Task Handle_ShouldReturnListOfMobileFoodFacility_WhenAllExist()
     {
         // Arrange
-        var query = new GetByNameQuery("ApplicantName");
+        var query = new GetAllQuery();
         var cancellationToken = new CancellationToken();
         var expectedFoodFacilities = new List<MobileFoodFacility>();
         expectedFoodFacilities.Add(new MobileFoodFacility
@@ -33,10 +33,10 @@ public class GetByNameQueryHandlerTests
         expectedFoodFacilities.Add(new MobileFoodFacility
         {
             LocationId = 2, 
-            Applicant = "ApplicantName"
+            Applicant = "ApplicantName1"
         });
 
-        _repositoryMock.Setup(r => r.GetByApplicant(query.Applicant))
+        _repositoryMock.Setup(r => r.ListAsync())
             .ReturnsAsync(expectedFoodFacilities);
 
         // Act
@@ -45,16 +45,16 @@ public class GetByNameQueryHandlerTests
         // Assert
         result.Value.Should().BeEquivalentTo(expectedFoodFacilities);
     }
-
+    
     [Fact]
-    public async Task Handle_ShouldReturnError_WhenApplicantDoesNotExist()
+    public async Task Handle_ShouldReturnError_WhenNoneExist()
     {
         // Arrange
-        var query = new GetByNameQuery("ApplicantName");
+        var query = new GetAllQuery();
         var cancellationToken = new CancellationToken();
         List<MobileFoodFacility> nullFoodFacility = null!;
         
-        _repositoryMock.Setup(r => r.GetByApplicant(query.Applicant))
+        _repositoryMock.Setup(r => r.ListAsync())
             .ReturnsAsync(nullFoodFacility);
         
         // Act
