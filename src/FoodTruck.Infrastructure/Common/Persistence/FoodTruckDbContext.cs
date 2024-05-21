@@ -7,7 +7,7 @@ namespace FoodTruck.Infrastructure.Common.Persistence;
 /// <summary>
 /// Represents the database context for the Food Truck application.
 /// </summary>
-internal class FoodTruckDbContext(DbContextOptions options) : DbContext(options)
+public class FoodTruckDbContext(DbContextOptions options) : DbContext(options)
 {
     public DbSet<MobileFoodFacility> MobileFoodFacilities { get; init; } = null!;
 

@@ -8,7 +8,7 @@ namespace FoodTruck.Infrastructure.MobileFoodFacilities.Persistence;
 /// <summary>
 /// Repository for accessing mobile food facilities.
 /// </summary>
-internal class MobileFoodFacilitiesRepository(
+public class MobileFoodFacilitiesRepository(
     FoodTruckDbContext dbContext) 
     : IMobileFoodFacilityRepository
 {

@@ -11,5 +11,8 @@
     &lt;TestId&gt;xUnit::1E0EE7C0-ECB4-4D85-AC06-6E8E5A5A1B33::net8.0::FoodTruck.Application.Tests.MobileFoodFacilities.Queries.GetByNameQueryHandlerTests.Handle_ShouldReturnError_WhenLocationIdDoesNotExist&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::1E0EE7C0-ECB4-4D85-AC06-6E8E5A5A1B33::net8.0::FoodTruck.Application.Tests.MobileFoodFacilities.Queries.GetAllQueryHandlerTest.Handle_ShouldReturnListOfMobileFoodFacility_WhenAllExist&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::1E0EE7C0-ECB4-4D85-AC06-6E8E5A5A1B33::net8.0::FoodTruck.Application.Tests.MobileFoodFacilities.Queries.GetAllQueryHandlerTest.Handle_ShouldReturnError_WhenNoneExist&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A2B8C092-4708-412F-A5DB-FE19F65BA7DA::net8.0::FoodTruck.Infrastructure.Tests.MobileFoodFacilities.Persistence.MobileFoodFacilityRepositoryTests.ListAsync_ShouldReturnAllFacilities_WhenFacilitiesExist&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A2B8C092-4708-412F-A5DB-FE19F65BA7DA::net8.0::FoodTruck.Infrastructure.Tests.MobileFoodFacilities.Persistence.MobileFoodFacilityRepositoryTests.GetByLocationId_ShouldReturnFacility_WhenIdExists&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A2B8C092-4708-412F-A5DB-FE19F65BA7DA::net8.0::FoodTruck.Infrastructure.Tests.MobileFoodFacilities.Persistence.MobileFoodFacilityRepositoryTests.GetByApplicant_ShouldReturnFacility_WhenApplicantExists&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
