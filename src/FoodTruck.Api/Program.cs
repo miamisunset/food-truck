@@ -9,7 +9,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddProblemDetails();
 
 builder.Services
-    .AddInfrastructure()
+    .AddInfrastructure(builder.Configuration)
     .AddApplication();
 
 var app = builder.Build();
