@@ -71,7 +71,7 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
     private static MobileFoodFacilitiesResponse ToResponseDto(MobileFoodFacility foodFacility) =>
         new(foodFacility.LocationId, 
             foodFacility.Applicant,
-            ToDto(foodFacility.FacilityType), 
+            ToFacilityTypeDto(foodFacility.FacilityType), 
             foodFacility.Cnn, 
             foodFacility.LocationDescription, 
             foodFacility.Address, 
@@ -80,7 +80,7 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
             foodFacility.Longitude, 
             foodFacility.Latitude);
 
-    private static FacilityType ToDto(DomainFacilityType? facilityType)
+    private static FacilityType ToFacilityTypeDto(DomainFacilityType? facilityType)
     {
         if (facilityType is null) return FacilityType.Unknown;
         
