@@ -1,5 +1,4 @@
-﻿using ErrorOr;
-using FoodTruck.Application.MobileFoodFacilities.Queries;
+﻿using FoodTruck.Application.MobileFoodFacilities.Queries;
 using FoodTruck.Contracts.MobileFoodFacilities;
 using FoodTruck.Domain.MobileFoodFacilities;
 using MediatR;
