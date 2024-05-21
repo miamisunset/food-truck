@@ -1,4 +1,5 @@
-﻿using FoodTruck.Application.MobileFoodFacilities.Queries;
+﻿using ErrorOr;
+using FoodTruck.Application.MobileFoodFacilities.Queries;
 using FoodTruck.Contracts.MobileFoodFacilities;
 using FoodTruck.Domain.MobileFoodFacilities;
 using MediatR;
@@ -29,32 +30,25 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<MobileFoodFacilitiesResponse>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> GetAllMobileFoodFacilities()
-    {
-        var result = await mediator.Send(new GetAllQuery());
-        
-        return result.Match(
-            foodFacilities =>
-            {
-                var response = foodFacilities
-                    .Select(ToResponseDto)
-                    .ToList();
-
-                return Ok(response);
-            },
-            Problem);
-    }
+    public async Task<IActionResult> GetAllMobileFoodFacilities() => 
+        await GetMobileFoodFacilitiesList(new GetAllQuery());
 
     [HttpGet("search")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MobileFoodFacilitiesResponse))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<MobileFoodFacilitiesResponse>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> SearchByName([FromQuery]string? name)
     {
         if (name is null)
             return Problem(statusCode: StatusCodes.Status400BadRequest);
-        
-        var result = await mediator.Send(new GetByNameQuery(name));
+
+        return await GetMobileFoodFacilitiesList(new GetByNameQuery(name));
+    }
+
+    private async Task<IActionResult> GetMobileFoodFacilitiesList<TRequest>(TRequest query)
+        where TRequest : IRequest<ErrorOr<List<MobileFoodFacility>>> 
+    {
+        var result = await mediator.Send(query);
 
         return result.Match(
             foodFacilities =>

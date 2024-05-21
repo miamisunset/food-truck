@@ -13,7 +13,7 @@ public class GetByNameQueryHandler(
         GetByNameQuery query, 
         CancellationToken cancellationToken)
     {
-        var foodFacilities = await repository.GetByApplicant(query.applicant);
+        var foodFacilities = await repository.GetByApplicant(query.Applicant);
         
         return foodFacilities is null || foodFacilities.Count is 0
             ? Error.NotFound(description: "No food trucks or carts found")
