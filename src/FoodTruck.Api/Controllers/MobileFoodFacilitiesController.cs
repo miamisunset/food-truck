@@ -21,7 +21,7 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MobileFoodFacilitiesResponse))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> GetMobileFoodFacilityByLocationId(int locationId)
+    public async Task<IActionResult> GetBy(int locationId)
     {
         var result = await mediator
             .Send(new GetByLocationIdQuery(locationId));
@@ -41,7 +41,7 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<MobileFoodFacilitiesResponse>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> GetAllMobileFoodFacilities(
+    public async Task<IActionResult> GetAll(
         int page = 1, int size = 10) => 
         await GetMobileFoodFacilitiesList(new GetAllQuery(page, size));
 
@@ -54,7 +54,7 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<MobileFoodFacilitiesResponse>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> SearchByName([FromQuery]string? name)
+    public async Task<IActionResult> SearchBy([FromQuery]string? name)
     {
         const int maxNameLength = 255;
         
