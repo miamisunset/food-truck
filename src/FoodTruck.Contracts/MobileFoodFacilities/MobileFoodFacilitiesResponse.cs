@@ -12,5 +12,4 @@ public record MobileFoodFacilitiesResponse(
     string Address,
     string? BlockLot,
     string? FoodItems,
-    float Longitude,
-    float Latitude);
+    Geolocation Geolocation);

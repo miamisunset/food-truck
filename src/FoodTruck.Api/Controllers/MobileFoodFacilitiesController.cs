@@ -96,9 +96,10 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
             foodFacility.LocationDescription, 
             foodFacility.Address, 
             foodFacility.BlockLot, 
-            foodFacility.FoodItems, 
-            foodFacility.Longitude, 
-            foodFacility.Latitude);
+            foodFacility.FoodItems,
+            Geolocation: new Geolocation(
+                foodFacility.Latitude,
+                foodFacility.Longitude));
 
     /// <summary>
     /// Converts a domain FacilityType object to a FacilityType DTO object.
