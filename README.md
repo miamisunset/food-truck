@@ -7,8 +7,8 @@
 
 ## Description
 
-An example project written using .NET. It is designed using Clean Architecture, Mediator and Result patterns. The project also
-uses feature based organization principle.
+An example project written using .NET. It is designed using Clean Architecture, Mediator (CQRS in other words) and Result 
+patterns. The project also uses feature based organization principle.
 
 ## Local Requirements
 
