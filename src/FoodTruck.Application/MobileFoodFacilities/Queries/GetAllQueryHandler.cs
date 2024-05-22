@@ -22,7 +22,7 @@ public class GetAllQueryHandler(
         GetAllQuery query, 
         CancellationToken cancellationToken)
     {
-        var foodFacilities = await repository.ListAsync();
+        var foodFacilities = await repository.ListAsync(query.Page, query.Size);
 
         return foodFacilities is null || foodFacilities.Count is 0
             ? Error.NotFound(description: "No food trucks or carts found")

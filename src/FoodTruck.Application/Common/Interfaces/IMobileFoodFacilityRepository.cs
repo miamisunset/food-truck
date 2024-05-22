@@ -7,7 +7,7 @@ namespace FoodTruck.Application.Common.Interfaces;
 /// </summary>
 public interface IMobileFoodFacilityRepository
 {
-    Task<List<MobileFoodFacility>?> ListAsync();
+    Task<List<MobileFoodFacility>?> ListAsync(int page, int size);
     Task<MobileFoodFacility?> GetByLocationId(int locationId);
     Task<List<MobileFoodFacility>?> GetByApplicant(string applicant);
 }

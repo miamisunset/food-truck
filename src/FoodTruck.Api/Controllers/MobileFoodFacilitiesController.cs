@@ -34,13 +34,16 @@ public class MobileFoodFacilitiesController(ISender mediator) : ApiController
     /// <summary>
     /// Retrieves a list of all mobile food facilities.
     /// </summary>
+    /// <param name="page">Page number</param>
+    /// <param name="size">Size of the page</param>
     /// <returns>A list of mobile food facilities.</returns>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<MobileFoodFacilitiesResponse>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> GetAllMobileFoodFacilities() => 
-        await GetMobileFoodFacilitiesList(new GetAllQuery());
+    public async Task<IActionResult> GetAllMobileFoodFacilities(
+        int page = 1, int size = 10) => 
+        await GetMobileFoodFacilitiesList(new GetAllQuery(page, size));
 
     /// <summary>
     /// Searches mobile food facilities by name.

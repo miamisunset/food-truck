@@ -4,10 +4,10 @@ using MediatR;
 
 namespace FoodTruck.Application.MobileFoodFacilities.Queries;
 
-/// The `GetAllQuery` class represents a query to retrieve all mobile food facilities.
-/// **Usage**
-/// ```csharp
-/// GetAllQuery query = new GetAllQuery();
-/// ```
-/// /
-public record GetAllQuery : IRequest<ErrorOr<List<MobileFoodFacility>>>;
+/// <summary>
+/// Represents a query to retrieve a list of all mobile food facilities.
+/// </summary>
+public record GetAllQuery(
+    int Page,
+    int Size) 
+    : IRequest<ErrorOr<List<MobileFoodFacility>>>;

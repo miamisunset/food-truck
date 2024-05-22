@@ -1,10 +1,10 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=065723be_002D434b_002D48af_002D9b28_002Daf91b79d000c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Handle_ShouldReturnMobileFoodFacility_WhenLocationIdExists #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=065723be_002D434b_002D48af_002D9b28_002Daf91b79d000c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Handle_ShouldReturnMobileFoodFacility_WhenLocationIdExists #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::1E0EE7C0-ECB4-4D85-AC06-6E8E5A5A1B33::net8.0::FoodTruck.Application.Tests.MobileFoodFacilities.Queries.GetByLocationIdQueryHandlerTests.Handle_ShouldReturnMobileFoodFacility_WhenLocationIdExists&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::EF6F44F4-956D-4652-A27D-57BB08117568::net8.0::FoodTruck.Application.Tests.MobileFoodFacilities.Queries.GetAllQueryHandlerTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=484cd9e0_002Dfbc5_002D4f4b_002D93bf_002D13746b9c8e05/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Handle_ShouldReturnMobileFoodFacility_WhenLocationIdExists" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=484cd9e0_002Dfbc5_002D4f4b_002D93bf_002D13746b9c8e05/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Handle_ShouldReturnMobileFoodFacility_WhenLocationIdExists" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::1E0EE7C0-ECB4-4D85-AC06-6E8E5A5A1B33::net8.0::FoodTruck.Application.Tests.MobileFoodFacilities.Queries.GetByLocationIdQueryHandlerTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::1E0EE7C0-ECB4-4D85-AC06-6E8E5A5A1B33::net8.0::FoodTruck.Application.Tests.MobileFoodFacilities.Queries.GetByNameQueryHandlerTests.Handle_ShouldReturnListOfMobileFoodFacility_WhenApplicantExists&lt;/TestId&gt;&#xD;
