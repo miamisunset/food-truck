@@ -39,7 +39,7 @@ public class MobileFoodFacilityRepositoryTests : IDisposable
     public async Task ListAsync_ShouldReturnAllFacilities_WhenFacilitiesExist()
     {
         // Act
-        var result = await _repository.ListAsync();
+        var result = await _repository.ListAsync(1, 10);
 
         // Assert
         Assert.NotNull(result);
