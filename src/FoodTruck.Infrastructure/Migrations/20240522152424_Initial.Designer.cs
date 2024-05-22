@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodTruck.Infrastructure.Migrations
 {
     [DbContext(typeof(FoodTruckDbContext))]
-    [Migration("20240520202710_Initial")]
+    [Migration("20240522152424_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -61,14 +61,16 @@ namespace FoodTruck.Infrastructure.Migrations
                     b.Property<string>("FoodItems")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Latitude")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Latitude")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("LocationDescription")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Longitude")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Longitude")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Lot")
                         .HasColumnType("TEXT");

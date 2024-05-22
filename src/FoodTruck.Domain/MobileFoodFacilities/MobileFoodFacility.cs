@@ -16,8 +16,8 @@ public class MobileFoodFacility
     public string? FoodItems { get; set; }
     public int? X { get; set; }
     public int? Y { get; set; }
-    public float Latitude { get; set; }
-    public float Longitude { get; set; }
+    public string Latitude { get; set; } = string.Empty;
+    public string Longitude { get; set; } = string.Empty;
     public string Schedule { get; set; } = string.Empty;
     public string? DaysHours { get; set; }
     public DateTime? Approved { get; set; }

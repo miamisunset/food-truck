@@ -58,14 +58,16 @@ namespace FoodTruck.Infrastructure.Migrations
                     b.Property<string>("FoodItems")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Latitude")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Latitude")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("LocationDescription")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Longitude")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Longitude")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Lot")
                         .HasColumnType("TEXT");
